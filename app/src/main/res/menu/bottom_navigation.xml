@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/roomFragment"
+        android:title="@string/rooms"
+        android:icon="@drawable/ic_rooms"/>
+    <item android:id="@+id/bookedFragment"
+        android:title="@string/booked"
+        android:icon="@drawable/ic_booked"/>
+</menu>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/roomFragment">
+
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="com.example.hw_05_m7.ui.fragment.rooms.RoomFragment"
+        android:label="fragment_room"
+        tools:layout="@layout/fragment_room" >
+        <action
+            android:id="@+id/action_roomFragment_to_detailRoomsFragment"
+            app:destination="@id/detailRoomsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookedFragment"
+        android:name="com.example.hw_05_m7.ui.fragment.booked.BookedFragment"
+        android:label="fragment_booked"
+        tools:layout="@layout/fragment_booked" />
+    <fragment
+        android:id="@+id/detailRoomsFragment"
+        android:name="com.example.hw_05_m7.ui.fragment.detail_rooms.DetailRoomsFragment"
+        android:label="fragment_detail_rooms"
+        tools:layout="@layout/fragment_detail_rooms" >
+        <action
+            android:id="@+id/action_detailRoomsFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+        <argument
+            android:name="roomId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+    </fragment>
+</navigation>
