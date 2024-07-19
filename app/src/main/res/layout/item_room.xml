@@ -7,7 +7,6 @@
     android:padding="16dp"
     android:background="#12529E"
     android:layout_marginBottom="8dp"
-    android:cornerRadius="8dp"
     android:elevation="2dp">
 
     <ImageView
