@@ -6,20 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.hw_05_m7.data.local.entity.RoomEntity
 import com.example.hw_05_m7.databinding.FragmentRoomBinding
 import com.example.hw_05_m7.ui.interfaces.OnClick
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class RoomFragment : Fragment(), OnClick {
 
     private lateinit var binding: FragmentRoomBinding
-    private val roomAdapter = RoomAdapter(this)
+    private lateinit var roomAdapter: RoomAdapter
     private val viewModel: RoomViewModel by viewModels()
-    private var rooms = ArrayList<RoomEntity>()
+    private val rooms = ArrayList<RoomEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +32,21 @@ class RoomFragment : Fragment(), OnClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addDataInAdapter()
+        observeRooms()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        roomAdapter = RoomAdapter(this)
+        binding.recyclerViewRooms.adapter = roomAdapter
+    }
+
+    private fun observeRooms() {
+        viewModel.getAll().observe(viewLifecycleOwner, Observer { rooms ->
+            rooms?.let {
+                roomAdapter.submitList(it)
+            }
+        })
     }
 
     private fun addDataInAdapter() {
@@ -94,5 +109,4 @@ class RoomFragment : Fragment(), OnClick {
         val action = RoomFragmentDirections.actionRoomFragmentToDetailRoomsFragment(roomEntity.id)
         findNavController().navigate(action)
     }
-
 }

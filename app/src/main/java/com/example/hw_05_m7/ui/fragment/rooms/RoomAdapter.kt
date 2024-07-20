@@ -10,7 +10,8 @@ import com.example.hw_05_m7.databinding.ItemRoomBinding
 import com.example.hw_05_m7.ui.interfaces.OnClick
 
 class RoomAdapter(private val onClick: OnClick) :
-    ListAdapter<RoomEntity, RoomAdapter.RoomViewHolder>(DiffCallback()) {
+    ListAdapter<RoomEntity, RoomAdapter.RoomViewHolder>(RoomDiffCallback()) {
+
     inner class RoomViewHolder(private val binding: ItemRoomBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(room: RoomEntity) = with(binding) {
@@ -26,21 +27,18 @@ class RoomAdapter(private val onClick: OnClick) :
     }
 
     override fun onBindViewHolder(holder: RoomViewHolder, position: Int) {
-        holder.bind(getItem(position))
-        holder.itemView.setOnClickListener { onClick.onClick(getItem(position)) }
+        val room = getItem(position)
+        holder.bind(room)
+        holder.itemView.setOnClickListener { onClick.onClick(room) }
     }
 
+    class RoomDiffCallback : DiffUtil.ItemCallback<RoomEntity>() {
+        override fun areItemsTheSame(oldItem: RoomEntity, newItem: RoomEntity): Boolean {
+            return oldItem.id == newItem.id
+        }
 
+        override fun areContentsTheSame(oldItem: RoomEntity, newItem: RoomEntity): Boolean {
+            return oldItem == newItem
+        }
+    }
 }
-
-class DiffCallback : DiffUtil.ItemCallback<RoomEntity>() {
-    override fun areItemsTheSame(oldItem: RoomEntity, newItem: RoomEntity): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: RoomEntity, newItem: RoomEntity): Boolean {
-        return oldItem == newItem
-    }
-}
-
-

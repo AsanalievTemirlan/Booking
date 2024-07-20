@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.hw_05_m7.data.local.dao.BookingDao
 import com.example.hw_05_m7.data.local.db.BookingDataBase
 import dagger.Module
 import dagger.Provides
@@ -22,4 +23,8 @@ class AppModule {
         Room.databaseBuilder(context, BookingDataBase::class.java, "DataBase" )
             .fallbackToDestructiveMigration().allowMainThreadQueries().build()
 
+    @Provides
+    fun provideDao(db: BookingDataBase): BookingDao {
+        return db.bookingDao()
+    }
 }
