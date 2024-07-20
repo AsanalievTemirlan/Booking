@@ -10,7 +10,7 @@ data class RoomEntity(
     val number: String,
     val description: String,
     val image: String,
-    val status: Boolean = false,
+    var status: Boolean = false,
     val hotelName: String,
     val floor: String
 )

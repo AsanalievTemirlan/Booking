@@ -21,7 +21,7 @@ interface BookingDao {
     suspend fun updateRoom(room: RoomEntity)
 
     @Query("SELECT * FROM room WHERE id = :id")
-    fun getRoomById(id: Int): RoomEntity
+    fun getRoomById(id: Int): LiveData<RoomEntity>
 
     @Query("SELECT * FROM room")
     fun getAllRooms(): LiveData<List<RoomEntity>>

@@ -1,6 +1,7 @@
 package com.example.hw_05_m7.ui.fragment.rooms
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,9 +32,9 @@ class RoomFragment : Fragment(), OnClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
         addDataInAdapter()
         observeRooms()
-        setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
@@ -43,9 +44,8 @@ class RoomFragment : Fragment(), OnClick {
 
     private fun observeRooms() {
         viewModel.getAll().observe(viewLifecycleOwner, Observer { rooms ->
-            rooms?.let {
-                roomAdapter.submitList(it)
-            }
+            Log.e("TAG", "Observing rooms $rooms")
+            roomAdapter.submitList(rooms)
         })
     }
 
@@ -57,7 +57,7 @@ class RoomFragment : Fragment(), OnClick {
                 hotelName = "Hotel 1",
                 floor = "1st",
                 description = "Description 1",
-                image = "https://cdn.prod.website-files.com/5c6d6c45eaa55f57c6367749/65045f093c166fdddb4a94a5_x-65045f0266217.webp"
+                image = "https://yandex.kz/images/search?pos=21&from=tabbar&img_url=https%3A%2F%2Fhotels.sletat.ru%2Fi%2Ff%2F128044_1.jpg&text=hotel+roo%2C&rpt=simage&lr=10309"
             )
         )
         rooms.add(
@@ -106,7 +106,7 @@ class RoomFragment : Fragment(), OnClick {
     }
 
     override fun onClick(roomEntity: RoomEntity) {
-        val action = RoomFragmentDirections.actionRoomFragmentToDetailRoomsFragment(roomEntity.id)
+        val action = RoomFragmentDirections.actionRoomFragmentToDetailRoomsFragment(roomEntity.id!!)
         findNavController().navigate(action)
     }
 }

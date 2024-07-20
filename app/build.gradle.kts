@@ -69,4 +69,6 @@ dependencies {
     implementation( "androidx.room:room-ktx:2.6.1")
     //Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    //Coil
+    implementation ("io.coil-kt:coil:2.6.0")
 }

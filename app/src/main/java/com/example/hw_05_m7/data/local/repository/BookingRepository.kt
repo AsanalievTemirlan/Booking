@@ -10,7 +10,7 @@ class BookingRepository @Inject constructor(
 ) {
     fun getAll(): LiveData<List<RoomEntity>> = bookingDao.getAllRooms()
 
-    fun getById(id: Int): RoomEntity = bookingDao.getRoomById(id)
+    fun getById(id: Int): LiveData<RoomEntity> = bookingDao.getRoomById(id)
 
     suspend fun insert(roomEntity: RoomEntity) = bookingDao.insertRoom(roomEntity)
 

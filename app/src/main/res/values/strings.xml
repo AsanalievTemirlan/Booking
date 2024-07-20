@@ -11,4 +11,6 @@
     <string name="booking_form">Форма бронирования</string>
     <string name="rooms">Rooms</string>
     <string name="booked">Booked</string>
+    <string name="book">Booking</string>
+    <string name="back">Назад</string>
 </resources>
