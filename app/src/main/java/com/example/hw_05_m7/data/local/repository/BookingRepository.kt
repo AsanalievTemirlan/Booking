@@ -12,9 +12,10 @@ class BookingRepository @Inject constructor(
 
     fun getById(id: Int): LiveData<RoomEntity> = bookingDao.getRoomById(id)
 
+    fun getByStatus(status: Boolean): LiveData<List<RoomEntity>> = bookingDao.getRoomStatus(status)
+
     suspend fun insert(roomEntity: RoomEntity) = bookingDao.insertRoom(roomEntity)
 
     suspend fun update(roomEntity: RoomEntity) = bookingDao.updateRoom(roomEntity)
 
-    suspend fun delete(roomEntity: RoomEntity) = bookingDao.deleteRoom(roomEntity)
 }

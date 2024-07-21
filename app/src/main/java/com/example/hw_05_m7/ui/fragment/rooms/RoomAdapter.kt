@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.hw_05_m7.data.local.entity.RoomEntity
 import com.example.hw_05_m7.databinding.ItemRoomBinding
 import com.example.hw_05_m7.ui.interfaces.OnClick
@@ -18,6 +19,7 @@ class RoomAdapter(private val onClick: OnClick) :
             tvRoomNumber.text = room.number
             tvHotelName.text = room.hotelName
             tvBookingStatus.text = if (room.status) "booked" else "freely"
+            imgRoom.load(room.image)
         }
     }
 

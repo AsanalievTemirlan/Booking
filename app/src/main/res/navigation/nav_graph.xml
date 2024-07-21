@@ -18,7 +18,11 @@
         android:id="@+id/bookedFragment"
         android:name="com.example.hw_05_m7.ui.fragment.booked.BookedFragment"
         android:label="fragment_booked"
-        tools:layout="@layout/fragment_booked" />
+        tools:layout="@layout/fragment_booked" >
+        <action
+            android:id="@+id/action_bookedFragment_to_detailRoomsFragment"
+            app:destination="@id/detailRoomsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailRoomsFragment"
         android:name="com.example.hw_05_m7.ui.fragment.detail_rooms.DetailRoomsFragment"
@@ -31,5 +35,8 @@
             android:name="roomId"
             app:argType="integer"
             android:defaultValue="-1"/>
+        <action
+            android:id="@+id/action_detailRoomsFragment_to_bookedFragment"
+            app:destination="@id/bookedFragment" />
     </fragment>
 </navigation>

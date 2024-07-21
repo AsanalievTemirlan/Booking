@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#0C661F"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp">
+
+    <ImageView
+        tools:src="@mipmap/ic_launcher"
+        android:id="@+id/img_room"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        tools:text="dal;daldadawdawdawd"
+        android:id="@+id/tv_room_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#233448"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        tools:text="dal;daldadawdawdawd"
+        android:id="@+id/tv_hotel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#5884BF"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        tools:text="dal;daldadawdawdawd"
+        android:id="@+id/tv_booking_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#BEB4AA"
+        android:layout_marginTop="4dp"/>
+
+</LinearLayout>

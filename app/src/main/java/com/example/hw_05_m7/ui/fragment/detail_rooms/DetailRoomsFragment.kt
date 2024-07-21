@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.example.hw_05_m7.R
 import com.example.hw_05_m7.databinding.FragmentDetailRoomsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,30 +37,26 @@ class DetailRoomsFragment : Fragment() {
     }
 
     private fun setUpListeners() {
-        if (binding.checkBooking.isChecked){
-            viewModel.getRoomId(roomId).observe(viewLifecycleOwner) { room ->
-                room?.let {
-                    it.status = true
-                    viewModel.updateRoom(it)
-                    binding.btnBack.setOnClickListener {
-                        findNavController().navigateUp()
+        binding.btnBack.setOnClickListener {
+            if (binding.checkBooking.isChecked) {
+                viewModel.getRoomId(roomId).observe(viewLifecycleOwner) { room ->
+                    room?.let {
+                        it.status = true
+                        viewModel.updateRoom(it)
+                        findNavController().navigate(R.id.roomFragment)
                     }
                 }
-            }
-        }
-        else{
-            viewModel.getRoomId(roomId).observe(viewLifecycleOwner) { room ->
-                room?.let {
-                    it.status = false
-                    viewModel.updateRoom(it)
-                    binding.btnBack.setOnClickListener {
-                        findNavController().navigateUp()
+            } else {
+                viewModel.getRoomId(roomId).observe(viewLifecycleOwner) { room ->
+                    room?.let {
+                        it.status = false
+                        viewModel.updateRoom(it)
+                        findNavController().navigate(R.id.roomFragment)
                     }
                 }
+
             }
         }
-
-
     }
 
     private fun setUpView() = with(binding) {
@@ -71,6 +68,7 @@ class DetailRoomsFragment : Fragment() {
                     tvFloor.text = it.floor
                     tvDescription.text = it.description
                     imgRoomDetail.load(it.image)
+                    checkBooking.isChecked = it.status
                 }
             })
         }

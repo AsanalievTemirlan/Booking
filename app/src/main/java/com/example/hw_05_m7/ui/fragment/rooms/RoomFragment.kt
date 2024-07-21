@@ -43,10 +43,10 @@ class RoomFragment : Fragment(), OnClick {
     }
 
     private fun observeRooms() {
-        viewModel.getAll().observe(viewLifecycleOwner, Observer { rooms ->
+        viewModel.getAll().observe(viewLifecycleOwner) { rooms ->
             Log.e("TAG", "Observing rooms $rooms")
             roomAdapter.submitList(rooms)
-        })
+        }
     }
 
     private fun addDataInAdapter() {
@@ -106,7 +106,7 @@ class RoomFragment : Fragment(), OnClick {
     }
 
     override fun onClick(roomEntity: RoomEntity) {
-        val action = RoomFragmentDirections.actionRoomFragmentToDetailRoomsFragment(roomEntity.id!!)
+        val action = RoomFragmentDirections.actionRoomFragmentToDetailRoomsFragment(roomEntity.id)
         findNavController().navigate(action)
     }
 }

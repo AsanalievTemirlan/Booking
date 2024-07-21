@@ -14,9 +14,6 @@ interface BookingDao {
     @Insert
     suspend fun insertRoom(room: RoomEntity)
 
-    @Delete
-    suspend fun deleteRoom(room: RoomEntity)
-
     @Update
     suspend fun updateRoom(room: RoomEntity)
 
@@ -25,4 +22,7 @@ interface BookingDao {
 
     @Query("SELECT * FROM room")
     fun getAllRooms(): LiveData<List<RoomEntity>>
+
+    @Query("SELECT * FROM room WHERE status = :status")
+    fun getRoomStatus(status: Boolean): LiveData<List<RoomEntity>>
 }
