@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Circle background -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256,256-114.615,256-256S397.385,0,256,0ZM256,475.429c-120.795,0-219.429-98.634-219.429-219.429S135.205,36.571,256,36.571,475.429,135.205,475.429,256,376.795,475.429,256,475.429Z"/>
+
+    <!-- Bell base -->
+    <path
+        android:fillColor="#15529B"
+        android:pathData="M192,320h128v32H192z"/>
+
+    <!-- Bell dome -->
+    <path
+        android:fillColor="#15529B"
+        android:pathData="M256,128c-88.366,0-160,71.634-160,160h320C416,199.634,344.366,128,256,128Z"/>
+
+    <!-- Bell handle -->
+    <path
+        android:fillColor="#15529B"
+        android:pathData="M256,96c-17.673,0-32,14.327-32,32h64C288,110.327,273.673,96,256,96Z"/>
+</vector>

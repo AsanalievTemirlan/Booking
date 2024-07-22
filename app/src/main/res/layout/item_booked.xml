@@ -10,7 +10,7 @@
     android:elevation="2dp">
 
     <ImageView
-        tools:src="@mipmap/ic_launcher"
+        tools:src="@drawable/ic_icon"
         android:id="@+id/img_room"
         android:layout_width="match_parent"
         android:layout_height="150dp"
