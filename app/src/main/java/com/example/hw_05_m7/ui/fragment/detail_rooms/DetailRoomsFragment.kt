@@ -1,12 +1,12 @@
 package com.example.hw_05_m7.ui.fragment.detail_rooms
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
@@ -43,7 +43,7 @@ class DetailRoomsFragment : Fragment() {
                     room?.let {
                         it.status = true
                         viewModel.updateRoom(it)
-                        findNavController().navigate(R.id.roomFragment)
+                        findNavController().navigateUp()
                     }
                 }
             } else {
@@ -51,7 +51,7 @@ class DetailRoomsFragment : Fragment() {
                     room?.let {
                         it.status = false
                         viewModel.updateRoom(it)
-                        findNavController().navigate(R.id.roomFragment)
+                        findNavController().navigateUp()
                     }
                 }
 
@@ -60,8 +60,9 @@ class DetailRoomsFragment : Fragment() {
     }
 
     private fun setUpView() = with(binding) {
+        Log.e("TAG", "setUpView true $roomId")
         if (roomId != -1) {
-            viewModel.getRoomId(roomId).observe(viewLifecycleOwner, Observer { room ->
+            viewModel.getRoomId(roomId).observe(viewLifecycleOwner) { room ->
                 room?.let {
                     tvRoomNumber.text = it.number
                     tvHotelName.text = it.hotelName
@@ -70,7 +71,12 @@ class DetailRoomsFragment : Fragment() {
                     imgRoomDetail.load(it.image)
                     checkBooking.isChecked = it.status
                 }
-            })
+            }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.e("TAG", "onDestroy")
     }
 }

@@ -20,7 +20,6 @@ class BookedFragment : Fragment(), OnClick {
 
     private lateinit var binding: FragmentBookedBinding
     private val viewModel: BookedViewModel by viewModels()
-    private val rooms = ArrayList<RoomEntity>()
     private lateinit var adapter: BookedAdapter
 
     override fun onCreateView(
@@ -50,7 +49,8 @@ class BookedFragment : Fragment(), OnClick {
 
     override fun onClick(roomEntity: RoomEntity) {
         val action = BookedFragmentDirections.actionBookedFragmentToDetailRoomsFragment(roomEntity.id)
-        findNavController().navigate(action.actionId)
+        Log.e("TAG", "Booked ${roomEntity.id}")
+        findNavController().navigate(action)
     }
 
 

@@ -32,9 +32,9 @@ class RoomFragment : Fragment(), OnClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
         addDataInAdapter()
         observeRooms()
+        setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
@@ -57,7 +57,7 @@ class RoomFragment : Fragment(), OnClick {
                 hotelName = "Hotel 1",
                 floor = "1st",
                 description = "Description 1",
-                image = "https://yandex.kz/images/search?pos=21&from=tabbar&img_url=https%3A%2F%2Fhotels.sletat.ru%2Fi%2Ff%2F128044_1.jpg&text=hotel+roo%2C&rpt=simage&lr=10309"
+                image = "https://cdn.prod.website-files.com/5c6d6c45eaa55f57c6367749/65045f093c166fdddb4a94a5_x-65045f0266217.webp"
             )
         )
         rooms.add(
@@ -100,13 +100,15 @@ class RoomFragment : Fragment(), OnClick {
                 image = "https://cdn.prod.website-files.com/5c6d6c45eaa55f57c6367749/65045f093c166fdddb4a94a5_x-65045f0266217.webp"
             )
         )
-        for (i in rooms) {
-            viewModel.insertRooms(i)
+        rooms.forEach { room ->
+            viewModel.insertRooms(room)
         }
+
     }
 
     override fun onClick(roomEntity: RoomEntity) {
         val action = RoomFragmentDirections.actionRoomFragmentToDetailRoomsFragment(roomEntity.id)
+        Log.e("TAG", "${action.actionId}")
         findNavController().navigate(action)
     }
 }
